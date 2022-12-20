@@ -14,7 +14,7 @@ carpentry: 'incubator'
 title: 'Statistical Comparisons using R'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: 2022-12-20
+created: ~
 
 # Comma-separated list of keywords for the lesson
 keywords: 'software, data, lesson, The Carpentries'
@@ -59,7 +59,8 @@ contact: 'training@qcif.edu.au'
 
 # Order of episodes in your lesson
 episodes: 
-- introduction.Rmd
+#- introduction.Rmd
+- 01-Hypothesis-Testing.Rmd
 
 # Information for Learners
 learners: 
