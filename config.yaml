@@ -61,6 +61,9 @@ contact: 'training@qcif.edu.au'
 episodes: 
 #- introduction.Rmd
 - 01-Hypothesis-Testing.Rmd
+- 02-Preparation-of-data.Rmd
+- 03-Correlation.Rmd
+- 04-Categorical-Variables.Rmd
 
 # Information for Learners
 learners: 
