@@ -63,7 +63,7 @@ measurements on the same samples)? The figure below summarises the choice of
 statistical test used for each of these cases.
 
 ![](fig/05-fig1.png){alt="Decision tree to determine appropriate test to use. 
-Q1 - Are the data normally distributed? Q2 - Are the data paired?
+Question one - Are the data normally distributed? Question 2 - Are the data paired?
 If the data are both normally distributed and paired, us a paired T-test
 If the data are normally distributed but not paired, use a T-test
 If the data are not normally distributed but are paired, use the Wilcoxon signed rank test

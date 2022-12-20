@@ -45,7 +45,12 @@ tests. As with two-sample testing, the appropriate test is determined in large
 part by whether the data in each group is normally distributed, and whether the
 data is paired, as outlined in the figure below.
 
-![RStudio layout](fig/06-fig1.png)
+![RStudio layout](fig/06-fig1.png){alt="Decision chart for appropriate test to use with multiple groups. 
+Question one: Are the normally distributed. Question 2: Are the data paired.
+If they are both normally distributed and paired, use Repeated Measures ANOVA.
+If they are normally distributed and not paired, use one-way or two-way ANOVA.
+If they are not normally distributed but are paired, use the Friedman test.
+If they are neither normally distributed nor paired, use the Kruskal-Wallace test."}
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
@@ -88,15 +93,15 @@ The null hypothesis for one-way ANOVA is that the means of all groups are equal;
 the alternative hypothesis is that at least one of the means is different from the 
 others.
 
-H<sub>0</sub>: Âµ<sub>1</sub> = Âµ<sub>2</sub> = Âµ<sub>3</sub> = ... = Âµ<sub>k</sub>  
-H<sub>1</sub>: Âµ<sub>1</sub> â‰  Âµ<sub>2</sub> OR Âµ<sub>1</sub> â‰  Âµ<sub>3</sub> OR 
-Âµ<sub>2</sub> â‰  Âµ<sub>3</sub> ....
+H<sub>0</sub>: µ<sub>1</sub> = µ<sub>2</sub> = µ<sub>3</sub> = ... = µ<sub>k</sub>  
+H<sub>1</sub>: µ<sub>1</sub> ­ µ<sub>2</sub> OR µ<sub>1</sub> ­ µ<sub>3</sub> OR 
+µ<sub>2</sub> ­ µ<sub>3</sub> ....
 
 The ANOVA extension of the t-test is called the **F-test**, and is based around 
 decomposing the total variation in the sample into the variability (sum of 
 squares) within groups and between groups
 
-![](fig/06-fig2.png)
+![](fig/06-fig2.png){alt="Table showing the breakdown of variation between and within groups"}
 
 ## ANOVA one-way example
 
@@ -253,7 +258,7 @@ table(happiness$Gender, happiness$Treatment)
 
 This corresponds to this design:
 
-![](fig/06-fig4.png)
+![]({fig}/06-fig4.png){alt="Table summarising happiness scores by sex and treatment"}
 
 As usual, an early step in studying our data is to visualise it
 ```{r}
@@ -287,7 +292,10 @@ below shows examples of (left) where both main effects have a difference but
 there is no interaction and (right) where there is a strong interaction but
 little main effect.
 
-![](fig/06-fig7.png)
+![](fig/06-fig7.png){alt="Graph explaining interaction of variables. The first plot shows
+a situation with no interaction, where the effect of treatment is the same irrespective of 
+the sex of the patient. The second shows a situation with interaction, where the outcome 
+is very different for the two sexes"}
 
 Interaction plots can be made in R using the `interaction.plot` command. Note 
 the order of factors - switching these alters which variable is plotted on the 
@@ -379,7 +387,7 @@ trend in this plot.
 
 #### Point Leverage plot
 Measure of importance of each point in determining the regression result. 
-Superimposed on the plot are contour lines for the Cookâ€™s distance (another 
+Superimposed on the plot are contour lines for the CookÕs distance (another 
 measure of the importance of each observation). 
 
 Smaller distances means that removing the observation has little affect on the 
