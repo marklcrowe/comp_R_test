@@ -175,7 +175,7 @@ proportion of patients showing a particular symptom before and after treatment
 Which test do we need? The data is not paired, so it is not the McNemar test.
 What are the expected counts for each cell?
 
-```{r}
+```{r warning=FALSE}
 # CrossTable from gmodels library gives expected counts, and also proportions
 library(gmodels)
 CrossTable(gallstones$Rec, gallstones$Obese, 

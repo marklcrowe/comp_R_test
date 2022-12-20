@@ -2,24 +2,23 @@
 title: "Testing For More Than Two Groups"
 teaching: 45
 exercises: 10
-questions:
-- "Are the group means different among three or more groups?"
-objectives:
-- "Identify situations needing multiple sample tests and choose the correct test 
-for the type of data"
-- "Perform one and two-way ANOVA testing"
-- "Recognise interaction effects in multiple-category testing"
-- "Interpret test results and apply post hoc testing"
-keypoints:
-- "Identify situations needing multiple sample tests and choose the relevant 
-test using the decision tree" 
-- "Perform multi-group testing using `aov` and `kruskal.test`"
-- "Perform and interpret post hoc tests using `TukeyHSD` and `dunnTest`"
-- "Study interactions using `interaction.plot` and `aov`"
-- "Check model assumptions using `plot`"
-
-output: html_document
 ---
+
+::::::::::::::::::::::::::::::::::::: questions
+
+- Are the group means different among three or more groups?
+
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Identify situations needing multiple sample tests and choose the correct test 
+for the type of data
+- Perform one and two-way ANOVA testing
+- Recognise interaction effects in multiple-category testing
+- Interpret test results and apply post hoc testing
+
+::::::::::::::::::::::::::::::::::::: 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -46,25 +45,31 @@ tests. As with two-sample testing, the appropriate test is determined in large
 part by whether the data in each group is normally distributed, and whether the
 data is paired, as outlined in the figure below.
 
-![RStudio layout](../fig/06-fig1.png)
+![RStudio layout](fig/06-fig1.png)
 
-> ## Challenge 1
->
-> Based on what you have learned previously in this workshop, how can we best
-> determine whether the data in each sample is normally distributed
-> > ## Solution to Challenge 1
-> > 
-> > We can use the `shapiro.test` function to test for normality - or rather, to 
-> > test the alternative hypothesis that the data is not normally distributed. 
-> > Use the `by` function to test all categories in one command: 
-> > ```{r eval = FALSE}
-> > by(data$measurement, data$category, shapiro.test)
-> > ```
-> > Remember, as with the two sample tests, if any one group is not normally
-> > distributed, the whole analysis must be performed with the relevant 
-> > non-parametric test
-> {: .solution}
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 1
+
+Based on what you have learned previously in this workshop, how can we best
+determine whether the data in each sample is normally distributed
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 1
+
+We can use the `shapiro.test` function to test for normality - or rather, to 
+test the alternative hypothesis that the data is not normally distributed. 
+Use the `by` function to test all categories in one command: 
+```{r eval = FALSE}
+by(data$measurement, data$category, shapiro.test)
+```
+Remember, as with the two sample tests, if any one group is not normally
+distributed, the whole analysis must be performed with the relevant 
+non-parametric test
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
 
 ## ANOVA Testing - One-way
 
@@ -74,6 +79,7 @@ measurement variable, and one categorical variable (with three or more
 categories). 
 
 Assumptions for the one-way ANOVA are:
+
 * Independant samples
 * Normal distribution in each group
 * Homogeneity of variances
@@ -90,7 +96,7 @@ The ANOVA extension of the t-test is called the **F-test**, and is based around
 decomposing the total variation in the sample into the variability (sum of 
 squares) within groups and between groups
 
-![RStudio layout](../fig/06-fig2.png)
+![](fig/06-fig2.png)
 
 ## ANOVA one-way example
 
@@ -106,7 +112,8 @@ There are two variables - one categorical with more than two levels and one
 continuous. The data are not paired - all the measurements are from different 
 patients. So based on the decision tree, the appropriate test is either one-way
 ANOVA or Kruskal-Wallis test. The choice between these is made depending on 
-whether the data is normally distributed or not
+whether the data is normally distributed or not.
+
 ```{r}
 table(gallstones$Alcohol.Consumption)
 by(gallstones$Weight, gallstones$Alcohol.Consumption, shapiro.test)
@@ -115,16 +122,15 @@ by(gallstones$Weight, gallstones$Alcohol.Consumption, shapiro.test)
 The Shapiro test for group 1 gives a significant p-value, indicating that we 
 should reject the null hypothesis that the data is normally distributed. This 
 would indicate that the Kruskal-Wallis test is the appropriate one for this 
-analysis
+analysis.
 
 ```{r}
 kruskal.test(gallstones$Weight ~ gallstones$Alcohol.Consumption)
 ```
-```{r eval=FALSE}
+
+```{r}
 boxplot(gallstones$Weight ~ gallstones$Alcohol.Consumption)
 ```
-
-![RStudio layout](../fig/06-fig3.png)
 
 We can see that with a p-value of 0.64, we reject the alternative hypothesis and
 concluded that in this data set, there is no evidence for a difference in 
@@ -169,42 +175,52 @@ TukeyHSD(result)
 The layout here is similar to the Dunn's test with one row per comparison and the 
 p-value reported for each pairwise comparison
 
-> ## Challenge 2
->
-> For a more interesting analysis, try creating a dummy dataset with the weight 
-> of patients doubled for just one category of Alcohol.Consumption and then 
-> repeat the Kruskal-Wallis and Dunn's tests. Does this show a significant 
-> difference as you might expect?
-> > ## Solution to Challenge 2
-> >
-> >
-> > ```{r eval = FALSE}
-> > # Create a copy of the gallstones data frame so as not to break things later
-> > dummy_data <- gallstones
-> > # Double the weight for Alcohol.Consumption category 'Alcohol'
-> > ac_three <- which(gallstones$Alcohol.Consumption == 'Alcohol')
-> > dummy_data[ac_three, "Weight"] <- 2 * dummy_data[ac_three, "Weight"]
-> > # Then do the testing
-> > kruskal.test(dummy_data$Weight ~ dummy_data$Alcohol.Consumption)
-> > dunnTest(dummy_data$Weight~dummy_data$Alcohol.Consumption, 
-> >                    method = "bonferroni")
-> > ```
-> {: .solution}
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge
 
-> ## Challenge 3
->
-> Try using the dummmy dataset from challenge 2 for an ANOVA and Tukey's test
-> > ## Solution to Challenge 3
-> >
-> >
-> > ```{r eval = FALSE}
-> > dummy_result <- aov(dummy_data$Weight ~ dummy_data$Alcohol.Consumption)
-> > summary(dummy_result)
-> > TukeyHSD(dummy_result)
-> > ```
-> {: .solution}
-{: .challenge}
+## Challenge 2
+
+For a more interesting analysis, try creating a dummy dataset with the weight 
+of patients doubled for just one category of Alcohol.Consumption and then 
+repeat the Kruskal-Wallis and Dunn's tests. Does this show a significant 
+difference as you might expect?
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 2
+
+```{r eval = FALSE}
+# Create a copy of the gallstones data frame so as not to break things later
+dummy_data <- gallstones
+# Double the weight for Alcohol.Consumption category 'Alcohol'
+ac_three <- which(gallstones$Alcohol.Consumption == 'Alcohol')
+dummy_data[ac_three, "Weight"] <- 2 * dummy_data[ac_three, "Weight"]
+# Then do the testing
+kruskal.test(dummy_data$Weight ~ dummy_data$Alcohol.Consumption)
+dunnTest(dummy_data$Weight~dummy_data$Alcohol.Consumption, 
+                   method = "bonferroni")
+```
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 3
+
+Try using the dummmy dataset from challenge 2 for an ANOVA and Tukey's test
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 3
+
+```{r eval = FALSE}
+dummy_result <- aov(dummy_data$Weight ~ dummy_data$Alcohol.Consumption)
+summary(dummy_result)
+TukeyHSD(dummy_result)
+```
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
 
 ## ANOVA Testing - Two-way
 
@@ -220,6 +236,7 @@ that we will use here.
 The dataset we will use here is a small study to investigate the influence of 
 Prozac on the reported 'happiness score' of patients, and whether males and 
 female patients respond differently.
+
 * Happiness score recorded for 24 patients
 * Patients randomised to either placebo or Prozac **treatment** (first factor)
 * Patients **gender** recorded (second factor)
@@ -236,25 +253,22 @@ table(happiness$Gender, happiness$Treatment)
 
 This corresponds to this design:
 
-![RStudio layout](../fig/06-fig4.png)
+![](fig/06-fig4.png)
 
 As usual, an early step in studying our data is to visualise it
-```{r eval=FALSE}
+```{r}
 # First, plot just using each of the factors independently
 par(mfrow=c(1,2))
 plot(Score ~ Treatment + Gender, data = happiness)
 par(mfrow=c(1,1))
 ```
 
-![RStudio layout](../fig/06-fig5.png)
-
-```{r eval = FALSE}
+```{r}
 # Then using ggplot to separate out the four different combinations of factor
 ggplot(data = happiness, aes(x = Treatment, y = Score, fill = Gender)) +
   geom_boxplot(position = position_dodge())
 ```
 
-![RStudio layout](../fig/06-fig6.png)
 
 Judging by the boxplots, there appears to be a difference in happiness score for 
 the different treatment drugs (score higher with treatment than placebo). 
@@ -273,17 +287,16 @@ below shows examples of (left) where both main effects have a difference but
 there is no interaction and (right) where there is a strong interaction but
 little main effect.
 
-![RStudio layout](../fig/06-fig7.png)
+![](fig/06-fig7.png)
 
 Interaction plots can be made in R using the `interaction.plot` command. Note 
 the order of factors - switching these alters which variable is plotted on the 
 x-axis.
-```{r eval=FALSE}
+```{r}
 interaction.plot(happiness$Treatment, happiness$Gender, happiness$Score,
                  col=2:3, lwd=3)
 ```
 
-![RStudio layout](../fig/06-fig8.png)
 
 The interaction plot seems to show that there is a strong interaction effect 
 between Treatment and Gender on happiness score, but to confirm that we can fit
@@ -331,29 +344,28 @@ units.
 
 ### Checking assumptions
 After fitting an ANOVA model it is important to always check the relevant model
-assumptions. This includes making QQ-plots and residual plots
-```{r eval = FALSE}
+assumptions. This includes making QQ-plots and residual plots.
+
+```{r}
 par(mfrow=c(2,2))
 plot(result)
 ```
 
-![RStudio layout](../fig/06-fig9.png)
 
 
 #### Characteristics of a well-behaved residual vs. fits plot
+
 1. The residuals "bounce randomly" around the 0 line. This suggests that the 
 assumption that the relationship is linear is reasonable.
-
 2. The residuals roughly form a "horizontal band" around the 0 line. This 
 suggests that the variances of the error terms are equal.
-
 3. No one residual "stands out" from the basic random pattern of residuals. This 
 suggests that there are no outliers.
 
 #### Characteristics of a well-behaved Q-Q plot
+
 1. If the points on the q-q plot fall approximately on a straight line, the 
 residuals are considered to be normally distributed.
-
 2. If some points are far from the line have a deeper look to see if they are 
 outliers.
 
@@ -394,17 +406,34 @@ different conditions.
 These more advanced tests are beyond the scope of this workshop, but some are
 covered in our **Longitudinal and Mixed Model Analysis** course.
 
-> ## Challenge 4
-> Can you think of a modification to our Happiness trial example which would 
-> mean it should be analysed using a paired data technique?
->
-> > ## Solution to Challenge 4
-> > One option would be that if, rather than testing on 24 individuals assigned
-> > randomly to placebo/treatment groups, the trial was instead carried out with
-> > 12 people and happiness scores recorded before and after treatment with 
-> > Prozac. Or perhaps a stricter design - 24 individuals treated with either 
-> > Prozac or placebo, with happiness scores recorded before and after 
-> > treatment.
-> {: .solution}
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge
 
+## Challenge 4
+Can you think of a modification to our Happiness trial example which would 
+mean it should be analysed using a paired data technique?
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 4
+One option would be that if, rather than testing on 24 individuals assigned
+randomly to placebo/treatment groups, the trial was instead carried out with
+12 people and happiness scores recorded before and after treatment with 
+Prozac. Or perhaps a stricter design - 24 individuals treated with either 
+Prozac or placebo, with happiness scores recorded before and after 
+treatment.
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Identify situations needing multiple sample tests and choose the relevant 
+test using the decision tree 
+- Perform multi-group testing using `aov` and `kruskal.test`
+- Perform and interpret post hoc tests using `TukeyHSD` and `dunnTest`
+- Study interactions using `interaction.plot` and `aov`
+- Check model assumptions using `plot`
+
+::::::::::::::::::::::::::::::::::::: 
+
+[r-markdown]: https://rmarkdown.rstudio.com/

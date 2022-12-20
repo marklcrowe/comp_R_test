@@ -2,16 +2,20 @@
 title: "Multiple testing, summary, and final exercises"
 teaching: 10
 exercises: 45
-questions:
-- "How do we interpret p-values when mutiple comparisons are carried out?"
-objectives:
-- "Recognise the impact of multiple testing on the meaning of p-values"
-- "Adjust p-values to compensate for the effects of multiple testing" 
-keypoints:
-- "Understand the impact of multiple testing on p-values"
-- "Use `p.adjust` to correct multiple-testing p-values"
-output: html_document
 ---
+
+::::::::::::::::::::::::::::::::::::: questions
+
+- How do we interpret p-values when mutiple comparisons are carried out?
+
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Recognise the impact of multiple testing on the meaning of p-values
+- Adjust p-values to compensate for the effects of multiple testing 
+
+::::::::::::::::::::::::::::::::::::: 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -33,6 +37,7 @@ happiness <- read.csv("data/happiness.csv", stringsAsFactors = TRUE)
 In ANOVA, if H<sub>0</sub> is rejected, we carry out a _post hoc_ test to 
 identify which group(s) are significantly different from the other ones. If 
 there are three groups (A, B and C), that means we are performing 3 comparisons:
+
 1. A vs B
 2. A vs C
 3. B vs C
@@ -50,15 +55,21 @@ In our example three-way comparison with signficance threshold of 0.05:
 So rather than a 5% chance of a type I error, we instead have a much higher 
 14.3% chance, which is clearly not acceptable.
 
-> ## Challenge 1
->
-> Memory test! A type I error is an incorrect rejection of the null hypothesis. 
-> Can you remember what a type II error is?
-> > ## Solution to Challenge 1
-> > 
-> > A type II error is a failure to reject the null hypothesis when it is false
-> {: .solution}
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 1
+
+Memory test! A type I error is an incorrect rejection of the null hypothesis. 
+Can you remember what a type II error is?
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 1
+
+A type II error is a failure to reject the null hypothesis when it is false
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
 
 ### Correction for multiple testing
 To compensate for the effects of multiple testing on expected error rate, we 
@@ -118,149 +129,174 @@ a given experimental design
 * Kruskal-Wallis ANOVA `kruskal.test(outcome~factor1)`
 
 ## Final practice exercises
-> ## Challenge 2
->
-> Do patients with multiple gallstones experience more recurrences than those 
-> with single stones?
-> > ## Solution to Challenge 2
-> > 
-> > The variables of interest are multiple stones (categorical, 2 groups)
-> > and recurrence (categorical, 2 groups). The appropriate test is therefore
-> > either Chi-square or Fisher's Exact, depending on the expected count for 
-> > each category
-> > ```r
-> > # Create the frequency table
-> > table(gallstones$Rec,gallstones$Mult)
-> > 
-> > # Complete Cross-table
-> > library(gmodels)
-> > CrossTable(gallstones$Rec,gallstones$Mult,format="SPSS",prop.chisq=F,expected=T)
-> > 
-> > # Visualisation
-> > 
-> > library(ggplot2)
-> > ggplot(gallstones, aes(Rec, fill=Mult)) + 
-> >   geom_bar(position="fill") +
-> >   scale_y_continuous(labels=scales::percent) +
-> >   theme(axis.text=element_text(size=18),
-> >         legend.text=element_text(size=18),
-> >         legend.title=element_text(size=18),
-> >         axis.title=element_text(size=18),
-> >         plot.title = element_text(size=22, face="bold"))+
-> >   ggtitle("Recurrence vs. Mult") 
-> > 
-> > # Chi-square test performed because more than 5 expected counts in each cell
-> > chisq.test(gallstones$Rec,gallstones$Mult)
-> > ```
-> > ### Conclusion
-> > With a p-value of 0.1295, there is no evidence for a significant association
-> > between gallstone recurrence and the presence of multiple stones
-> {: .solution}
-{: .challenge}
 
-> ## Challenge 3
->
-> Is the patient's age associated with gallstone recurrence?
-> > ## Solution to Challenge 3
-> > 
-> > The variables of interest are gallstone recurrence (categorical, 2 groups)
-> > and age (continuous). The appropriate test is therefore either the t-test
-> > or Mann-Whitney test, depending on whether the data is normally distributed
-> > or not
-> > ```r
-> > # Test normality in both groups
-> > shapiro.test(gallstones$Age[which(gallstones$Rec=="NoRecurrence")])
-> > shapiro.test(gallstones$Age[which(gallstones$Rec=="Recurrence")])
-> > 
-> > # Other option
-> > by(gallstones$Age,gallstones$Rec,shapiro.test)
-> > 
-> > # We have to perform a Mann-Whitney test 
-> > wilcox.test(gallstones$Age~gallstones$Rec)
-> > 
-> > # Boxplots to visualise
-> > plot(gallstones$Age~gallstones$Rec,col=c("red","blue"),ylab="Age",
-> >      xlab="Recurrence",cex.lab=1.3)
-> > 
-> > # Statistical descriptions
-> > by(gallstones$Age,gallstones$Rec,median)
-> > by(gallstones$Age,gallstones$Rec,IQR)
-> > 
-> > by(gallstones$Age,gallstones$Rec,mean)
-> > by(gallstones$Age,gallstones$Rec,sd)
-> > ```
-> > ### Conclusion
-> > With a p-value of 0.7707, there is no evidence for a significant association
-> > between gallstone recurrence and the age of patients
-> {: .solution}
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge
 
-> ## Challenge 4
->
-> Does alcohol consumption influence the time to gallstone dissolution?
-> > ## Solution to Challenge 4
-> > 
-> > The variables of interest are alcohol consumption (categorical, 3 groups)
-> > and dissolution time (continuous). The appropriate test is therefore either
-> > ANOVA or Kruskal-Wallis, depending on whether the data is normally 
-> > distributed or not
-> > ```r
-> > # Test normality in each groups
-> > by(gallstones$Dis,gallstones$Alcohol.Consumption,shapiro.test)
-> > 
-> > # If distribution normal in each group
-> > result<-aov(gallstones$Dis~gallstones$Alcohol.Consumption)
-> > summary(result)
-> > 
-> > # If distribution not normal
-> > kruskal.test(gallstones$Dis~gallstones$Alcohol.Consumption)
-> > 
-> > # Visualisation
-> > plot(gallstones$Dis~gallstones$Alcohol.Consumption,col=2:4)
-> > ```
-> > ### Conclusion
-> > With a p-value of 0.2389, there is no evidence for a significant association
-> > between alcohol consumption and dissolution time
-> {: .solution}
-{: .challenge}
+## Challenge 2
 
-> ## Challenge 5
->
-> Is there any effect of treatment and/or gender on the time to dissolution?
-> > ## Solution to Challenge 5
-> > 
-> > The variables of interest are gender (categorical, 2 groups), treatment 
-> > (categorical, two groups) and dissolution time (continuous). The appropriate
-> > test is therefore a two-way ANOVA
-> > ```r
-> > # Visualisation
-> > par(mfrow=c(1,2))
-> > plot(Dis~Treatment+Gender, data=gallstones)
-> > 
-> > # Interaction plot to visualise
-> > interaction.plot(gallstones$Treatment, gallstones$Gender, gallstones$Dis,
-> >                  col=2:3,lwd=3,cex.axis=1.5,cex.lab=1.5)
-> > 
-> > # anova 2 way with aov function
-> > result<-aov(Dis~Treatment+Gender+Treatment*Gender,data=gallstones)
-> > summary(result)
-> > 
-> > # anova 2 way with lm function
-> > result<-lm(Dis~Treatment+Gender+Treatment*Gender,data=gallstones)
-> > anova(result)
-> > 
-> > # Checking the assumptions of anova
-> > 
-> > result<-lm(Dis~Treatment+Gender+Treatment*Gender,data=gallstones)
-> > plot(result)
-> > ```
-> > ### Conclusion
-> > With a p-value of <0.0016, there is evidence for a significant effect  of
-> > treatment on dissolution time. There is no evidence for a difference between
-> > genders for dissolution time, nor evidence for an interaction between
-> > treatment and gender (both males and females have a similar response).
-> {: .solution}
-{: .challenge}
+Do patients with multiple gallstones experience more recurrences than those 
+with single stones?
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 2
+
+The variables of interest are multiple stones (categorical, 2 groups)
+and recurrence (categorical, 2 groups). The appropriate test is therefore
+either Chi-square or Fisher's Exact, depending on the expected count for 
+each category
+```r
+# Create the frequency table
+table(gallstones$Rec,gallstones$Mult)
+
+# Complete Cross-table
+library(gmodels)
+CrossTable(gallstones$Rec,gallstones$Mult,format="SPSS",prop.chisq=F,expected=T)
+
+# Visualisation
+
+library(ggplot2)
+ggplot(gallstones, aes(Rec, fill=Mult)) + 
+  geom_bar(position="fill") +
+  scale_y_continuous(labels=scales::percent) +
+  theme(axis.text=element_text(size=18),
+        legend.text=element_text(size=18),
+        legend.title=element_text(size=18),
+        axis.title=element_text(size=18),
+        plot.title = element_text(size=22, face="bold"))+
+  ggtitle("Recurrence vs. Mult") 
+
+# Chi-square test performed because more than 5 expected counts in each cell
+chisq.test(gallstones$Rec,gallstones$Mult)
+```
+### Conclusion
+With a p-value of 0.1295, there is no evidence for a significant association
+between gallstone recurrence and the presence of multiple stones
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 3
+
+Is the patient's age associated with gallstone recurrence?
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 3
+
+The variables of interest are gallstone recurrence (categorical, 2 groups)
+and age (continuous). The appropriate test is therefore either the t-test
+or Mann-Whitney test, depending on whether the data is normally distributed
+or not
+```r
+# Test normality in both groups
+shapiro.test(gallstones$Age[which(gallstones$Rec=="NoRecurrence")])
+shapiro.test(gallstones$Age[which(gallstones$Rec=="Recurrence")])
+
+# Other option
+by(gallstones$Age,gallstones$Rec,shapiro.test)
+
+# We have to perform a Mann-Whitney test 
+wilcox.test(gallstones$Age~gallstones$Rec)
+
+# Boxplots to visualise
+plot(gallstones$Age~gallstones$Rec,col=c("red","blue"),ylab="Age",
+     xlab="Recurrence",cex.lab=1.3)
+
+# Statistical descriptions
+by(gallstones$Age,gallstones$Rec,median)
+by(gallstones$Age,gallstones$Rec,IQR)
+
+by(gallstones$Age,gallstones$Rec,mean)
+by(gallstones$Age,gallstones$Rec,sd)
+```
+### Conclusion
+With a p-value of 0.7707, there is no evidence for a significant association
+between gallstone recurrence and the age of patients
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 4
+
+Does alcohol consumption influence the time to gallstone dissolution?
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 4
+
+The variables of interest are alcohol consumption (categorical, 3 groups)
+and dissolution time (continuous). The appropriate test is therefore either
+ANOVA or Kruskal-Wallis, depending on whether the data is normally 
+distributed or not
+```r
+# Test normality in each groups
+by(gallstones$Dis,gallstones$Alcohol.Consumption,shapiro.test)
+
+# If distribution normal in each group
+result<-aov(gallstones$Dis~gallstones$Alcohol.Consumption)
+summary(result)
+
+# If distribution not normal
+kruskal.test(gallstones$Dis~gallstones$Alcohol.Consumption)
+
+# Visualisation
+plot(gallstones$Dis~gallstones$Alcohol.Consumption,col=2:4)
+```
+### Conclusion
+With a p-value of 0.2389, there is no evidence for a significant association
+between alcohol consumption and dissolution time
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 5
+
+Is there any effect of treatment and/or gender on the time to dissolution?
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 5
+
+The variables of interest are gender (categorical, 2 groups), treatment 
+(categorical, two groups) and dissolution time (continuous). The appropriate
+test is therefore a two-way ANOVA
+```r
+# Visualisation
+par(mfrow=c(1,2))
+plot(Dis~Treatment+Gender, data=gallstones)
+
+# Interaction plot to visualise
+interaction.plot(gallstones$Treatment, gallstones$Gender, gallstones$Dis,
+                 col=2:3,lwd=3,cex.axis=1.5,cex.lab=1.5)
+
+# anova 2 way with aov function
+result<-aov(Dis~Treatment+Gender+Treatment*Gender,data=gallstones)
+summary(result)
+
+# anova 2 way with lm function
+result<-lm(Dis~Treatment+Gender+Treatment*Gender,data=gallstones)
+anova(result)
+
+# Checking the assumptions of anova
+
+result<-lm(Dis~Treatment+Gender+Treatment*Gender,data=gallstones)
+plot(result)
+```
+### Conclusion
+With a p-value of <0.0016, there is evidence for a significant effect  of
+treatment on dissolution time. There is no evidence for a difference between
+genders for dissolution time, nor evidence for an interaction between
+treatment and gender (both males and females have a similar response).
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
 
 ## Finishing up
 It is always a good idea to conclude any R analysis with the `sessionInfo()`
@@ -270,3 +306,12 @@ different analysis outcomes.
 ```{r}
 sessionInfo()
 ```
+
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Understand the impact of multiple testing on p-values
+- Use `p.adjust` to correct multiple-testing p-values
+
+::::::::::::::::::::::::::::::::::::: 
+
+[r-markdown]: https://rmarkdown.rstudio.com/

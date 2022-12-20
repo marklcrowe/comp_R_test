@@ -222,7 +222,7 @@ The p-value of the Shapiro-Wilk test for Height is less than 0.05, so we reject
 the null hypothesis and conclude that Height is not normally distributed.
 Therefore we should use Spearman's test for this analysis.
 
-```{r}
+```{r warning=FALSE}
 cor.test(gallstones$Height, gallstones$Weight, method="spearman")
 ```
 
