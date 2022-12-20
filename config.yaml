@@ -11,20 +11,20 @@
 carpentry: 'incubator'
 
 # Overall title for pages.
-title: 'Lesson Title'
+title: 'Statistical Comparisons using R'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: ~
+created: 2022-12-20
 
 # Comma-separated list of keywords for the lesson
 keywords: 'software, data, lesson, The Carpentries'
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
-life_cycle: 'pre-alpha'
+life_cycle: 'beta'
 
 # License of the lesson
-license: 'CC-BY 4.0'
+license: 'Not for reuse without permission'
 
 # Link to the source repository for this lesson
 source: 'https://github.com/carpentries/workbench-template-rmd'
@@ -33,7 +33,7 @@ source: 'https://github.com/carpentries/workbench-template-rmd'
 branch: 'main'
 
 # Who to contact if there are any issues
-contact: 'team@carpentries.org'
+contact: 'training@qcif.edu.au'
 
 # Navigation ------------------------------------------------
 #
