@@ -174,7 +174,7 @@ error), or failing to reject the null hypothesis when it is false (a type
 II error). The probability of a type 1 error is given by the p-value; it
 is possible to calculate the probability of a type II error, but we will 
 not cover that in this course.
-![RStudio layout](fig/01-fig1.png)
+![RStudio layout](fig/01-fig1.png){alt="Table showing Type 1 and Type 2 errors."}
 
 :::::::::::::::::::::::::::::::::::: keypoints
 

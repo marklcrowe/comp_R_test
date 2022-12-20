@@ -2,20 +2,32 @@
 title: "Categorical Variables"
 teaching: 45
 exercises: 10
-questions:
-- "What is a categorical variable?"
-- "What statistical tests are used with categorical data?"
-objectives:
-- "Tests for use with categorical variables"
-- "Summarising categorical data with barcharts"
-- "Using factors to code categorical variables"
-keypoints:
-- "Convert dataframe columns to factors using `as.factor`"
-- "Draw barcharts using `plot` and `ggplot`"
-- "Select an appropriate statistical test for a categorical dataset"
-- "Analyse categorical data using `chisq.test` and `fisher.test`"
-output: html_document
 ---
+
+::::::::::::::::::::::::::::::::::::: questions
+
+- What is a categorical variable?
+- What statistical tests are used with categorical data?
+
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Tests for use with categorical variables
+- Summarising categorical data with barcharts
+- Using factors to code categorical variables
+
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Convert dataframe columns to factors using `as.factor`
+- Draw barcharts using `plot` and `ggplot`
+- Select an appropriate statistical test for a categorical dataset
+- Analyse categorical data using `chisq.test` and `fisher.test`
+
+::::::::::::::::::::::::::::::::::::: 
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -51,16 +63,22 @@ categories. For example, it is common on survey forms to see an ordinal age
 field: under 15, 15-25, 26-40, etc. Ordinal data is outside the scope of today's
 workshop - talk to a statistician if you need more advice.
 
-> ## Challenge 1
->
-> Look again at the gallstones dataset. How many categorical fields does it 
-> contain?
-> > ## Solution to Challenge 1
-> > 
-> > There are seven categorical fields in this dataset: Gender, Obese, 
-> > Smoking.Status, Alcohol.Consumption, Treatment, Rec, and Mult
-> {: .solution}
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 1
+
+Look again at the gallstones dataset. How many categorical fields does it 
+contain?
+
+:::::::::::::::::::::::::::::::::::::  solution
+
+## Solution to Challenge 1
+
+There are seven categorical fields in this dataset: Gender, Obese, 
+Smoking.Status, Alcohol.Consumption, Treatment, Rec, and Mult
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
 
 ## Using factors for categorical data
 
@@ -111,7 +129,7 @@ Obese patients had a 63.6% chance of recurrence, non-obese patients only 34.6%
 # bar graph
 barplot(counts, beside=TRUE, legend=rownames(counts), col = c('red','blue'))
 ```
-![RStudio layout](../fig/04-fig1.png)
+![RStudio layout](fig/04-fig1.png)
 
 ```{r eval=FALSE}
 # ggplot can be used for higher quality figures, and to plot proportions rather
@@ -128,7 +146,7 @@ ggplot(gallstones, aes(Obese, fill=Rec)) +
   ggtitle("Obesity vs. Recurrence") 
 
 ```
-![RStudio layout](../fig/04-fig2.png)
+![RStudio layout](fig/04-fig2.png)
 
 From the charts and table it certainly looks like obesity is associated with a
 higher rate of recurrence, so we will test whether that is statistically
@@ -185,57 +203,76 @@ failed to reject H<sub>0</sub> - we should have consulted a statistician before
 gathering the data to check whether the sample size provided sufficient
 statistical power to detect a relationship.
 
-> ## Challenge 2
-> 
-> When would you use the Chi-square test
-> 1. When one variable is categorical and the other continuous
-> 2. When there is categorical data with more than five counts expected in each 
-> cell
-> 3. When there is paired categorical data
-> 4. You can use it interchangeably with Fisher's Exact test
-> 
-> > ## Solution to Challenge 2
-> > 
-> > Answer: 2
-> {: .solution}
-{: .challenge}
+::::::::::::::::::::::::::::::::::::: challenge
 
-> ## Challenge 3
-> Repeat the analysis to test whether recurrence is affected by treatment. 
-> 
-> Prepare simple and proportion/expected tables, prepare a bar chart, identify 
-> and perform the appropriate statistical test.
-> > ## Solution to Challenge 3
-> > 
-> > ```{r eval=FALSE}
-> > # Create the initial counts table
-> > counts2 <- table(gallstones$Rec, gallstones$Treatment)
-> > counts2
-> >
-> > # Plot using barplot
-> > barplot(counts2, beside = TRUE, legend = rownames(counts2), 
-> >         col = c('red','blue'))
-> > # Or plot using ggplot
-> > ggplot(gallstones, aes(Treatment, fill=Rec)) + 
-> >   geom_bar(position="fill") +
-> >   scale_y_continuous(labels=scales::percent) +
-> >   theme(axis.text=element_text(size=14),
-> >         legend.text=element_text(size=14),
-> >         legend.title=element_text(size=14),
-> >         axis.title=element_text(size=14),
-> >         plot.title = element_text(size=18, face="bold")) +
-> >   ggtitle("Treatment vs. Recurrence") 
-> > 
-> > # Look at expected values to select Chi-square or Fisher's Exact
-> > library(gmodels) # Optional if the library is already installed
-> > CrossTable(gallstones$Treatment,gallstones$Rec,format="SPSS",prop.chisq=F,expected=T)
-> > 
-> > # All expected values are greater than 5
-> > chisq.test(gallstones$Treatment, gallstones$Rec, correct=FALSE)
-> > ```
-> > Again, despite the barplot suggesting an association, the p-value is 
-> > non-significant, so we reject the alternative hypothesis that treatment has
-> > an effect on recurrence rate
-> {: .solution}
-{: .challenge}
+## Challenge 2
 
+When would you use the Chi-square test
+1. When one variable is categorical and the other continuous
+2. When there is categorical data with more than five counts expected in each 
+cell
+3. When there is paired categorical data
+4. You can use it interchangeably with Fisher's Exact test
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 2
+
+Answer: 2
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 3
+Repeat the analysis to test whether recurrence is affected by treatment. 
+
+Prepare simple and proportion/expected tables, prepare a bar chart, identify 
+and perform the appropriate statistical test.
+
+::::::::::::::::::::::::::::::::::::: solution
+
+## Solution to Challenge 3
+
+```{r eval=FALSE}
+# Create the initial counts table
+counts2 <- table(gallstones$Rec, gallstones$Treatment)
+counts2
+
+# Plot using barplot
+barplot(counts2, beside = TRUE, legend = rownames(counts2), 
+        col = c('red','blue'))
+# Or plot using ggplot
+ggplot(gallstones, aes(Treatment, fill=Rec)) + 
+  geom_bar(position="fill") +
+  scale_y_continuous(labels=scales::percent) +
+  theme(axis.text=element_text(size=14),
+        legend.text=element_text(size=14),
+        legend.title=element_text(size=14),
+        axis.title=element_text(size=14),
+        plot.title = element_text(size=18, face="bold")) +
+  ggtitle("Treatment vs. Recurrence") 
+
+# Look at expected values to select Chi-square or Fisher's Exact
+library(gmodels) # Optional if the library is already installed
+CrossTable(gallstones$Treatment,gallstones$Rec,format="SPSS",prop.chisq=F,expected=T)
+
+# All expected values are greater than 5
+chisq.test(gallstones$Treatment, gallstones$Rec, correct=FALSE)
+```
+Again, despite the barplot suggesting an association, the p-value is 
+non-significant, so we reject the alternative hypothesis that treatment has
+an effect on recurrence rate
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Convert dataframe columns to factors using `as.factor`
+- Draw barcharts using `plot` and `ggplot`
+- Select an appropriate statistical test for a categorical dataset
+- Analyse categorical data using `chisq.test` and `fisher.test`
+
+::::::::::::::::::::::::::::::::::::: 
