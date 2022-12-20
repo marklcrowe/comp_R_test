@@ -45,10 +45,10 @@ gallstones study are taller than female patients.
 
 ::::::::::::::::::::::::::::::::::::: discussion
 
-> ## Discussion
->
-> See if you can identify other examples where you might use a two sample groups
-> comparison. Do you have any in your own research?
+## Discussion
+
+See if you can identify other examples where you might use a two sample groups
+comparison. Do you have any in your own research?
 
 ::::::::::::::::::::::::::::::::::::: 
 
@@ -62,7 +62,12 @@ normally-distributed, and are the data paired (that is, are there repeated
 measurements on the same samples)? The figure below summarises the choice of
 statistical test used for each of these cases.
 
-![](../fig/05-fig1.png)
+![](fig/05-fig1.png){alt="Decision tree to determine appropriate test to use. 
+Q1 - Are the data normally distributed? Q2 - Are the data paired?
+If the data are both normally distributed and paired, us a paired T-test
+If the data are normally distributed but not paired, use a T-test
+If the data are not normally distributed but are paired, use the Wilcoxon signed rank test
+If the data are neither normally distributed nor paired, use the Mann-Whitney test"}
 
 The first step is to determine whether the continuous variable in each group is
 normally distributed. We've already learned about the `shapiro.test` function to 
@@ -80,22 +85,22 @@ test.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-> ## Challenge 1
->
-> In our gallstones dataset, assume that BMI is normally distributed for
-> patients with a recurrence of gallstones and not normal for those with no 
-> recurrence. Which test would we use to investigate whether those two groups
-> (with and without recurrence) had different BMIs?
+## Challenge 1
+
+In our gallstones dataset, assume that BMI is normally distributed for
+patients with a recurrence of gallstones and not normal for those with no 
+recurrence. Which test would we use to investigate whether those two groups
+(with and without recurrence) had different BMIs?
 
 ::::::::::::::::::::::::::::::::::::: solution
 
-> > ## Solution to Challenge 1
-> > 
-> > One data set is normally distributed, the other is not, so we choose the 
-> > option for non-normally distributed data - the branch to the right (we can 
-> > only answer yes to the first question if both datasets are normal). The data
-> > is not paired - the patients with recurrence are a different group to those
-> > without. In this case we would use the Mann-Whitney test.
+## Solution to Challenge 1
+
+One data set is normally distributed, the other is not, so we choose the 
+option for non-normally distributed data - the branch to the right (we can 
+only answer yes to the first question if both datasets are normal). The data
+is not paired - the patients with recurrence are a different group to those
+without. In this case we would use the Mann-Whitney test.
 
 ::::::::::::::::::::::::::::::::::::: 
 ::::::::::::::::::::::::::::::::::::: 
@@ -127,9 +132,9 @@ If **data are paired**: Student's paired T-test
 
 ::::::::::::::::::::::::::::::::::::: callout
 
-> The R `t.test` function combines all three of these tests, and defaults to 
-> Welch's two-sample T-test. To perform a standard T-test, use the parameter 
-> setting `var.equal = TRUE`, and for a paired T-test, use `paired = TRUE`. 
+The R `t.test` function combines all three of these tests, and defaults to 
+Welch's two-sample T-test. To perform a standard T-test, use the parameter 
+setting `var.equal = TRUE`, and for a paired T-test, use `paired = TRUE`. 
 
 ::::::::::::::::::::::::::::::::::::: 
 
@@ -144,9 +149,9 @@ means, by considering the data as rank order values rather than absolute values.
 
 ::::::::::::::::::::::::::::::::::::: callout
 
-> The `wilcox.test` function in R defaults to unpaired data - effectively 
-> returning the Mann-Whitney test instead. Carry out a paired Wilcox test with 
-> the `paired = TRUE` argument
+The `wilcox.test` function in R defaults to unpaired data - effectively 
+returning the Mann-Whitney test instead. Carry out a paired Wilcox test with 
+the `paired = TRUE` argument
 
 ::::::::::::::::::::::::::::::::::::: 
 
@@ -220,33 +225,33 @@ and females in our dataset.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-> ## Challenge 2
-> 
-> Using the gallstones dataset, test whether the gallstone diameter ("Diam") is
-> different between patients who suffer a recurrence and those who do not.
+## Challenge 2
+
+Using the gallstones dataset, test whether the gallstone diameter ("Diam") is
+different between patients who suffer a recurrence and those who do not.
 
 ::::::::::::::::::::::::::::::::::::: solution
 
-> > ## Solution to Challenge 2
-> > 
-> > ```{r eval = FALSE}
-> > # Visualise data
-> > boxplot(gallstones$Diam ~ gallstones$Rec, col = c("red","blue"),
-> >      ylab = "Diameter",
-> >      xlab = "Recurrence")
-> > # Test whether data is normally distributecd
-> > by(gallstones$Diam, gallstones$Rec, hist)
-> > by(gallstones$Diam, gallstones$Rec, shapiro.test)
-> > ```
-> > Data is not normal for the recurrence group, and data is not paired - hence
-> > Mann-Whitney test
-> > ```{r eval = FALSE}
-> > # Use wilcox.test function which defaults to Mann-Whitney analysis
-> > wilcox.test(gallstones$Diam ~ gallstones$Rec)
-> > ```
-> > The p-value is not significant, so we do not have sufficient evidence to 
-> > reject the null hypothesis that there is no difference in gallstone size
-> > between the two groups.
+## Solution to Challenge 2
+
+```{r eval = FALSE}
+# Visualise data
+boxplot(gallstones$Diam ~ gallstones$Rec, col = c("red","blue"),
+     ylab = "Diameter",
+     xlab = "Recurrence")
+# Test whether data is normally distributecd
+by(gallstones$Diam, gallstones$Rec, hist)
+by(gallstones$Diam, gallstones$Rec, shapiro.test)
+```
+Data is not normal for the recurrence group, and data is not paired - hence
+Mann-Whitney test
+```{r eval = FALSE}
+# Use wilcox.test function which defaults to Mann-Whitney analysis
+wilcox.test(gallstones$Diam ~ gallstones$Rec)
+```
+The p-value is not significant, so we do not have sufficient evidence to 
+reject the null hypothesis that there is no difference in gallstone size
+between the two groups.
 
 ::::::::::::::::::::::::::::::::::::: 
 ::::::::::::::::::::::::::::::::::::: 

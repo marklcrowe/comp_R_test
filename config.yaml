@@ -64,6 +64,7 @@ episodes:
 - 02-Preparation-of-data.Rmd
 - 03-Correlation.Rmd
 - 04-Categorical-Variables.Rmd
+- 05-Continuous-Variable.Rmd
 
 # Information for Learners
 learners: 
