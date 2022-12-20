@@ -62,6 +62,7 @@ there in the dataset?
 ## Solution to challenge 1
 
 The field contents are as follows:
+
 * Patient_ID – a unique numerical identifier for each patient
 * Gender – female or male: one-letter character string
 * Age – patient’s age: numerical value in years
@@ -93,6 +94,7 @@ by commas - a CSV file - so we will use the `read.csv` function to import this
 dataset.
 
 ::::::::::::::::::::::::::::::::::::: callout
+
 When reading in tabular data in R, you can use either `read.table` or a range
 of pre-configured aliases: `read.csv`, `read.csv2`, `read.delim` and
 `read.delim2`. These have function arguments already set to correspond to a
@@ -127,6 +129,7 @@ would be best to convert this to character strings.
 gallstones$Patient_ID <- as.character(gallstones$Patient_ID)
 str(gallstones$Patient_ID)
 ```
+
 ::::::::::::::::::::::::::::::::::::: callout
 
 Sometimes patient ID is numeric and ordered according to recruitment. In this
@@ -156,9 +159,12 @@ represented as a factor.
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints
+
 - Open a data file in a text editor or RStudio file viewer
 - Use `read.table` or `read.csv` to import data
 - Review a dataframe using `str` and `summary`
 - Convert columns from factors to string using `as.character`
 
 ::::::::::::::::::::::::::::::::::::: 
+
+[r-markdown]: https://rmarkdown.rstudio.com/

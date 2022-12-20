@@ -124,14 +124,14 @@ round(prop.table(table(gallstones$Rec, gallstones$Obese), margin = 2)*100,2)
 
 Obese patients had a 63.6% chance of recurrence, non-obese patients only 34.6%
 
-```{r eval=FALSE}
+```{r}
 # Plots are generally easier to interpret than tables, so review data as a 
 # bar graph
 barplot(counts, beside=TRUE, legend=rownames(counts), col = c('red','blue'))
 ```
-![RStudio layout](fig/04-fig1.png)
 
-```{r eval=FALSE}
+
+```{r}
 # ggplot can be used for higher quality figures, and to plot proportions rather
 # than counts
 ggplot(gallstones, aes(Obese, fill=Rec)) + 
@@ -146,7 +146,6 @@ ggplot(gallstones, aes(Obese, fill=Rec)) +
   ggtitle("Obesity vs. Recurrence") 
 
 ```
-![RStudio layout](fig/04-fig2.png)
 
 From the charts and table it certainly looks like obesity is associated with a
 higher rate of recurrence, so we will test whether that is statistically
@@ -165,6 +164,7 @@ _Hypotheses_:
   H<sub>1</sub>: Gallstone recurrence is linked with obesity  
 
 There are three main hypothesis tests for categorical variables:
+
 * *Chi-square test* `chisq.test()`: used when the _expected_ count in each cell
 of the table is greater than 5
 * *Fisher's exact test* `fisher.test()`: used when the expected count of at
@@ -185,6 +185,7 @@ CrossTable(gallstones$Rec, gallstones$Obese,
 This is slightly complicated output, but we are most interested in the "Expected 
 Values" and "Column Percent" figures - the second and fourth line of each box. 
 These show: 
+
 1. The expected number of obese patients suffering recurrence is 4.757 (<5)
 2. The recurrence rate in non-obese patients is 34.6%, whereas in obese patients 
 it is 63.6%
@@ -207,7 +208,8 @@ statistical power to detect a relationship.
 
 ## Challenge 2
 
-When would you use the Chi-square test
+When would you use the Chi-square test?
+
 1. When one variable is categorical and the other continuous
 2. When there is categorical data with more than five counts expected in each 
 cell
@@ -276,3 +278,5 @@ an effect on recurrence rate
 - Analyse categorical data using `chisq.test` and `fisher.test`
 
 ::::::::::::::::::::::::::::::::::::: 
+
+[r-markdown]: https://rmarkdown.rstudio.com/

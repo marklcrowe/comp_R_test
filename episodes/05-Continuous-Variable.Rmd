@@ -2,19 +2,22 @@
 title: "Comparison Between Two Groups"
 teaching: 45
 exercises: 10
-questions:
-- "Do two sample groups differ for a continuous trait?"
-objectives:
-- "Tests for use with comparison of two groups of continuous data"
-- "Summarising continuous data graphically"
-- "Selecting and using relevant statistical tests"
-keypoints:
-- "Use `hist` and boxplots to review distribution of variables for a group"
-- "Summarise grouped data using the `by` command"
-- "Distinguish paired and non-paired samples"
-- "Correctly use the `t.test` and `wilcox.test` functions"
-output: html_document
 ---
+
+::::::::::::::::::::::::::::::::::::: questions
+
+- Do two sample groups differ for a continuous trait?
+
+::::::::::::::::::::::::::::::::::::: 
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Tests for use with comparison of two groups of continuous data
+- Summarising continuous data graphically
+- Selecting and using relevant statistical tests
+
+::::::::::::::::::::::::::::::::::::: 
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -40,11 +43,14 @@ statistically-significant difference between the distribution of that variable
 between the two groups. As an example, we will test whether male patients in our
 gallstones study are taller than female patients.
 
+::::::::::::::::::::::::::::::::::::: discussion
+
 > ## Discussion
 >
 > See if you can identify other examples where you might use a two sample groups
 > comparison. Do you have any in your own research?
-{: .discussion}
+
+::::::::::::::::::::::::::::::::::::: 
 
 ### Choosing the relevant test
 
@@ -56,7 +62,7 @@ normally-distributed, and are the data paired (that is, are there repeated
 measurements on the same samples)? The figure below summarises the choice of
 statistical test used for each of these cases.
 
-![RStudio layout](../fig/05-fig1.png)
+![](../fig/05-fig1.png)
 
 The first step is to determine whether the continuous variable in each group is
 normally distributed. We've already learned about the `shapiro.test` function to 
@@ -72,6 +78,7 @@ There are a few further subtleties beyond this which we will come to in a
 moment, but these are the two major determining factors in choosing the correct
 test.
 
+::::::::::::::::::::::::::::::::::::: challenge
 
 > ## Challenge 1
 >
@@ -79,6 +86,9 @@ test.
 > patients with a recurrence of gallstones and not normal for those with no 
 > recurrence. Which test would we use to investigate whether those two groups
 > (with and without recurrence) had different BMIs?
+
+::::::::::::::::::::::::::::::::::::: solution
+
 > > ## Solution to Challenge 1
 > > 
 > > One data set is normally distributed, the other is not, so we choose the 
@@ -86,8 +96,9 @@ test.
 > > only answer yes to the first question if both datasets are normal). The data
 > > is not paired - the patients with recurrence are a different group to those
 > > without. In this case we would use the Mann-Whitney test.
-> {: .solution}
-{: .challenge}
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
 
 ## Two sample Student's T-test
 
@@ -99,24 +110,28 @@ less that the first). As we discussed in the introduction, generally a two-sided
 test is preferred unless there is a specific reason why a single-sided one is
 justified.
 
-H<sub>0</sub>: µ<sub>1</sub> = µ<sub>2</sub> | against | H<sub>1</sub>: 
-µ<sub>1</sub> ≠ µ<sub>2</sub> (two-sided)
- | or | 
-H<sub>0</sub>: µ<sub>1</sub> <= µ<sub>2</sub> | against | H<sub>1</sub>: 
-µ<sub>1</sub> > µ<sub>2</sub> (greater)
- | or | 
-H<sub>0</sub>: µ<sub>1</sub> >= µ<sub>2</sub> | against | H<sub>1</sub>: 
-µ<sub>1</sub> < µ<sub>2</sub> (less)
+| | | |
+| --- | --- | --- | 
+| H<sub>0</sub>: µ<sub>1</sub> = µ<sub>2</sub> | against | H<sub>1</sub>: 
+µ<sub>1</sub> ≠ µ<sub>2</sub> (two-sided) |
+| | or | |
+| H<sub>0</sub>: µ<sub>1</sub> <= µ<sub>2</sub> | against | H<sub>1</sub>: 
+µ<sub>1</sub> > µ<sub>2</sub> (greater) |
+| | or | |
+| H<sub>0</sub>: µ<sub>1</sub> >= µ<sub>2</sub> | against | H<sub>1</sub>: 
+µ<sub>1</sub> < µ<sub>2</sub> (less) |
 
 If **equal variance**: Student's T-test  
 If **unequal variance**: Welch's two-sample T-test  
 If **data are paired**: Student's paired T-test  
 
-> ## Tip
+::::::::::::::::::::::::::::::::::::: callout
+
 > The R `t.test` function combines all three of these tests, and defaults to 
 > Welch's two-sample T-test. To perform a standard T-test, use the parameter 
 > setting `var.equal = TRUE`, and for a paired T-test, use `paired = TRUE`. 
-{: .callout}
+
+::::::::::::::::::::::::::::::::::::: 
 
 ## Two sample Mann-Whitney test
 
@@ -127,11 +142,13 @@ _dependent_ variable is non-normally distributed
 The Mann-Whitney test compares the medians of the two groups rather than the 
 means, by considering the data as rank order values rather than absolute values.
 
-> ## Tip
+::::::::::::::::::::::::::::::::::::: callout
+
 > The `wilcox.test` function in R defaults to unpaired data - effectively 
 > returning the Mann-Whitney test instead. Carry out a paired Wilcox test with 
 > the `paired = TRUE` argument
-{: .callout}
+
+::::::::::::::::::::::::::::::::::::: 
 
 ## Two sample test example
 
@@ -145,25 +162,23 @@ Null hypothesis: There is no difference in height between the groups
 _Step one - visualise the data_  
 We will start by reviewing the data using a boxplot to see if there is an 
 indication of difference between the groups
-```{r eval=FALSE}
+```{r}
 plot(gallstones$Height ~ gallstones$Gender, 
      col=c('red','blue'),
      ylab = 'Height',
      xlab = 'Gender')
 ```
-![RStudio layout](../fig/05-fig2.png)
 
 Visually there certainly appears to be a difference. But is it statistically
 significant?
 
 _Step two - is the data normally distributed?_  
-```{r eval = FALSE}
+```{r}
 par(mfrow=c(1,2))
 hist(gallstones$Height[which(gallstones$Gender == 'F')], main = "Histogram of heights of females", xlab = "")
 hist(gallstones$Height[which(gallstones$Gender == 'M')], main = "Histogram of heights of males", xlab = "")
 par(mfrow=c(1,1))
 ```
-![RStudio layout](../fig/05-fig3.png)
 
 This doesn't look very normally-distributed, but we do have relatively few data
 points. A more convincing way to determine this would be with the Shapiro-Wilks
@@ -203,11 +218,15 @@ t.test(gallstones$Height ~ gallstones$Gender, var.equal = TRUE)
 hypothesis and conclude that there is a difference in the mean height of males
 and females in our dataset.
 
+::::::::::::::::::::::::::::::::::::: challenge
 
 > ## Challenge 2
 > 
 > Using the gallstones dataset, test whether the gallstone diameter ("Diam") is
 > different between patients who suffer a recurrence and those who do not.
+
+::::::::::::::::::::::::::::::::::::: solution
+
 > > ## Solution to Challenge 2
 > > 
 > > ```{r eval = FALSE}
@@ -228,8 +247,9 @@ and females in our dataset.
 > > The p-value is not significant, so we do not have sufficient evidence to 
 > > reject the null hypothesis that there is no difference in gallstone size
 > > between the two groups.
-> {: .solution}
-{: .challenge}
+
+::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::: 
 
 ## Group descriptions
 
@@ -269,3 +289,14 @@ other), and the data must be the same sample order in each group.
 Otherwise, paired sample analysis is performed in a similar way to unpaired 
 analysis. The main difference is to add the `paired = TRUE` argument to the 
 `t.test` or `wilcox.test` function.
+
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Use `hist` and boxplots to review distribution of variables for a group
+- Summarise grouped data using the `by` command
+- Distinguish paired and non-paired samples
+- Correctly use the `t.test` and `wilcox.test` functions
+
+::::::::::::::::::::::::::::::::::::: 
+
+[r-markdown]: https://rmarkdown.rstudio.com/

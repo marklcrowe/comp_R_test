@@ -41,7 +41,8 @@ can evaluate relatedness using correlation analysis.
 
 ## Challenge 1
 
-Which of the following datasets are continuous variables
+Which of the following datasets are continuous variables?
+
 1. The weight of a dog
 2. The age of a dog
 3. The breed of a dog
@@ -63,6 +64,7 @@ white dog and a black dog)
 
 A correlation measures the 'degree of association' between two continuous 
 variables. Associations can be:
+
 * *positive*: an increase in one variable is associated with an increase in the 
 other
 * *negative*: an increase in one variable is associated with a decrease in the
@@ -70,7 +72,8 @@ other
 * *non-linear*: as one variable increases, the other changes but not in a 
 consistant way
 
-![RStudio layout](fig/03-fig1.png)
+![](fig/03-fig1.png){alt="Graphs showing examples of positive and 
+negative correlation, non-correlated data, and non-linear correlation"}
 
 ## Previewing relationships with scatter plots
 
@@ -78,20 +81,20 @@ The gallstones dataset contains a number of continuous variables. The first step
 in studying potential relationships between these is to examine them using 
 scatter plots
 
-```{r eval=FALSE}
+```{r}
 plot(gallstones$Height, gallstones$Weight, 
      xlab = "Height",
      ylab = "Weight",
      cex.lab=0.8, cex.main=1,pch=1, # Set some plot formatting
      main="Scatter-plot of weight against height")
 ```
-![RStudio layout](fig/03-fig2.png)
+
 
 From this graph, there appears to be a correlation between height and weight.
 We can look at this further using ggplot, which provides the `geom_smooth` 
 function with which you can add a line showing the best correlation estimate
 
-```{r eval=FALSE}
+```{r}
 library(ggplot2)
 ggplot(gallstones, aes(x = Height, y = Weight)) +
   geom_point(shape = 1, size = 3) +
@@ -99,7 +102,7 @@ ggplot(gallstones, aes(x = Height, y = Weight)) +
   theme(axis.text = element_text(size = 12),
         axis.title = element_text(size = 14, face = "bold"))
 ```
-![RStudio layout](fig/03-fig3.png)
+
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
@@ -164,11 +167,17 @@ Both Pearson's and Spearman's tests calculate a correlation value _r_ between
 the two variables. This value indicates the degree of association between the
 variables
 
-|\|r\| = 0 |No relationship|
-|\|r\| = 1 |Perfect **linear** relationship|
-|\|r\| < 0.3 | Weak relationship|
-|0.3 ≤ \|r\| ≤ 0.7  | Moderate relationship|
-|\|r\| = 0.7 | Strong relationship|
+| | |
+| ------- | ---------------------- |
+| \|r\| = 0 | No relationship |
+| \|r\| = 1 | Perfect **linear** relationship |
+| \|r\| < 0.3 | Weak relationship |
+| 0.3 ≤ \|r\| ≤ 0.7  | Moderate relationship |
+| \|r\| = 0.7 | Strong relationship |
+
+
+![](fig/03-fig4.png){alt="Graphs showing examples of strong (r = 0.7),
+weak (r = 0.3) and no (r = 0) correlation"}
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -178,8 +187,6 @@ can be significant when the strength of the correlation is weak. It is
 normally fine to report p-values for most other tests.
 
 ::::::::::::::::::::::::::::::::::::: 
-
-![RStudio layout](fig/03-fig4.png)
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -196,15 +203,16 @@ the variability in Y
 From our plot, we have already established that Height and Weight seem to be 
 correlated, so we will calculate the correlation value for these variables.
 
-```{r eval=FALSE}
+```{r}
 # First, test if the variables are normally distributed
 hist(gallstones$Height)
 ```
-![RStudio layout](fig/03-fig5.png)
-```{r eval=FALSE}
+
+
+```{r}
 hist(gallstones$Weight)
 ```
-![RStudio layout](fig/03-fig6.png)
+
 ```{r}
 shapiro.test(gallstones$Height)
 shapiro.test(gallstones$Weight)
@@ -231,7 +239,7 @@ command `load("data/ep03_data.RData")`. This will load three dataframes of x
 and y coordinates: data1, data2, and data3. Without plotting the data, carry
 out some basic statistical tests (mean, standard deviation, correlation) on
 the three dataframes and see  if you can characterise the differences
- between them. Then plot them and see if your interpretations were correct.
+between them. Then plot them and see if your interpretations were correct.
 
 ::::::::::::::::::::::::::::::::::::: solution
 
@@ -291,3 +299,5 @@ dissolution
 - Calculate correlation coefficient using `cor` and `cor.test`
 
 ::::::::::::::::::::::::::::::::::::: 
+
+[r-markdown]: https://rmarkdown.rstudio.com/
