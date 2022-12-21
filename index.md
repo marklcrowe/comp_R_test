@@ -25,13 +25,13 @@ Topics covered during the workshop will include:
 * ANOVA - testing with more than two groups</li>
 
 
-::::::::::::::::::::::::::::::: callout
+:::::::::::::::::::::::::::::: callout
 
 ## Prerequisites
 
 Prior knowledge of R is required (the R for Reproducible Scientific Research Software Carpentry workshop is _highly_ recommended) as the basics of R will not be covered.
 
-::::::::::::::::::::::::::::::: 
+:::::::::::::::::::::::::::::: 
 
 [workbench]: https://carpentries.github.io/sandpaper-docs
 
