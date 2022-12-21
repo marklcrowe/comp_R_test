@@ -93,9 +93,9 @@ The null hypothesis for one-way ANOVA is that the means of all groups are equal;
 the alternative hypothesis is that at least one of the means is different from the 
 others.
 
-H<sub>0</sub>: &mu;<sub>1</sub> = &mu;<sub>2</sub> = &mu;<sub>3</sub> = ... = &mu;<sub>k</sub>  
-H<sub>1</sub>: &mu;<sub>1</sub> &ne; &mu;<sub>2</sub> OR &mu;<sub>1</sub> &ne; &mu;<sub>3</sub> OR 
-&mu;<sub>2</sub> &ne; &mu;<sub>3</sub> ....
+H<sub>0</sub>: µ<sub>1</sub> = µ<sub>2</sub> = µ<sub>3</sub> = ... = µ<sub>k</sub>  
+H<sub>1</sub>: µ<sub>1</sub> ≠ µ<sub>2</sub> OR µ<sub>1</sub> ≠ µ<sub>3</sub> OR 
+µ<sub>2</sub> ≠ µ<sub>3</sub> ....
 
 The ANOVA extension of the t-test is called the **F-test**, and is based around 
 decomposing the total variation in the sample into the variability (sum of 
