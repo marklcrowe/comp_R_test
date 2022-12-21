@@ -187,6 +187,8 @@ weak (r = 0.3) and no (r = 0) correlation"}
 
 ::::::::::::::::::::::::::::::::::::: callout
 
+## Publishing correlations
+
 p-values should never be reported for correlations in publications; always
 report the r or r<sup>2</sup> instead. Because of the nature of the test, the p-value
 can be significant when the strength of the correlation is weak. It is
@@ -197,6 +199,7 @@ normally fine to report p-values for most other tests.
 ::::::::::::::::::::::::::::::::::::: callout
 
 ## Coefficient of determination
+
 Pearson's *__r__* can be squared, *__r<sup>2</sup>__*, to derive a coefficient
 of determination. This is the portion of variability in one of the variables
 that can be accounted for by the variability in the second one. For example,

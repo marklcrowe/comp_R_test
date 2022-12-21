@@ -530,9 +530,9 @@ Prozac:Male-Placebo:Male      3.00  1.71186416  4.2881358 0.0000132
 
 The \\$Treatment section of this output supports our conclusion from the two-way
 ANOVA that Prozac increases happiness score, by an average of 1.6 happiness 
-units (95% CI: 0.95-2.3). The $Treatment:Gender section indicates that Prozac 
+units (95% CI: 0.95-2.3). The \\$Treatment:Gender section indicates that Prozac 
 has no effect on happiness in females (or at least, not a statistically 
-signficant effect), but in males it increases happiness by approximatey 3.0 
+signficant effect), but in males it increases happiness by approximately 3.0 
 units.
 
 ### Checking assumptions
