@@ -129,6 +129,8 @@ If **data are paired**: Student's paired T-test
 
 ::::::::::::::::::::::::::::::::::::: callout
 
+## Multiple tests in one
+
 The R `t.test` function combines all three of these tests, and defaults to 
 Welch's two-sample T-test. To perform a standard T-test, use the parameter 
 setting `var.equal = TRUE`, and for a paired T-test, use `paired = TRUE`. 
@@ -146,6 +148,7 @@ means, by considering the data as rank order values rather than absolute values.
 
 ::::::::::::::::::::::::::::::::::::: callout
 
+## Another multiple-test function
 The `wilcox.test` function in R defaults to unpaired data - effectively 
 returning the Mann-Whitney test instead. Carry out a paired Wilcox test with 
 the `paired = TRUE` argument

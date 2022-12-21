@@ -95,6 +95,8 @@ dataset.
 
 ::::::::::::::::::::::::::::::::::::: callout
 
+## Importing tabular data
+
 When reading in tabular data in R, you can use either `read.table` or a range
 of pre-configured aliases: `read.csv`, `read.csv2`, `read.delim` and
 `read.delim2`. These have function arguments already set to correspond to a
@@ -131,6 +133,8 @@ str(gallstones$Patient_ID)
 ```
 
 ::::::::::::::::::::::::::::::::::::: callout
+
+## Value-added data
 
 Sometimes patient ID is numeric and ordered according to recruitment. In this
 situation, it can be used as a surrogate for time to check for any biases over 
