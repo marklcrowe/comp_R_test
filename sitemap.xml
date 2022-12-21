@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/01-Hypothesis-Testing.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-template-rmd/01-introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/02-Preparation-of-data.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/03-Correlation.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/04-Categorical-Variables.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/05-Continuous-Variable.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/06-ANOVA.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/07-Multiple-Testing.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-rmd/CODE_OF_CONDUCT.html</loc>
@@ -19,7 +40,28 @@
     <loc>https://carpentries.github.io/workbench-template-rmd/index.html</loc>
   </url>
   <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/instructor/01-Hypothesis-Testing.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-template-rmd/instructor/01-introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/instructor/02-Preparation-of-data.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/instructor/03-Correlation.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/instructor/04-Categorical-Variables.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/instructor/05-Continuous-Variable.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/instructor/06-ANOVA.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-rmd/instructor/07-Multiple-Testing.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-rmd/instructor/CODE_OF_CONDUCT.html</loc>

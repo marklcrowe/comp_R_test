@@ -177,7 +177,79 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Using RMarkdown</a>
+        <a href="01-Hypothesis-Testing.html">1. Introduction to Hypothesis Testing</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush3">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading3">
+        <a href="02-Preparation-of-data.html">2. Preparation of Data</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush4">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading4">
+        <a href="03-Correlation.html">3. Relationship Between Continuous Variables</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush5">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading5">
+        <a href="04-Categorical-Variables.html">4. Categorical Variables</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush6">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading6">
+        <a href="05-Continuous-Variable.html">5. Comparison Between Two Groups</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="06-ANOVA.html">6. Testing For More Than Two Groups</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="07-Multiple-Testing.html">7. Multiple testing, summary, and final exercises</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -239,17 +311,77 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         
         
-<section id="introduction"><h2 class="section-heading"><a href="introduction.html">Using RMarkdown</a></h2>
+<section id="01-Hypothesis-Testing"><h2 class="section-heading"><a href="01-Hypothesis-Testing.html">Introduction to Hypothesis Testing</a></h2>
 <hr class="half-width">
 <ul>
-<li>Use <code>.md</code> files for episodes when you want static
-content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate
-output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
-with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
-locally</li>
+<li>Select appropriate and testable null and alternative hypotheses</li>
+<li>Interpret p-values and statistical significance correctly</li>
+</ul></section><section id="02-Preparation-of-data"><h2 class="section-heading"><a href="02-Preparation-of-data.html">Preparation of Data</a></h2>
+<hr class="half-width">
+<ul>
+<li>Open a data file in a text editor or RStudio file viewer</li>
+<li>Use <code>read.table</code> or <code>read.csv</code> to import
+data</li>
+<li>Review a dataframe using <code>str</code> and
+<code>summary</code>
+</li>
+<li>Convert columns from factors to string using
+<code>as.character</code>
+</li>
+</ul></section><section id="03-Correlation"><h2 class="section-heading"><a href="03-Correlation.html">Relationship Between Continuous Variables</a></h2>
+<hr class="half-width">
+<ul>
+<li>Distinguish a continuous variable</li>
+<li>Review data using <code>plot</code> and <code>ggplot</code>
+</li>
+<li>Test for normality of a dataset using <code>shapiro.test</code>
+</li>
+<li>Calculate correlation coefficient using <code>cor</code> and
+<code>cor.test</code>
+</li>
+</ul></section><section id="04-Categorical-Variables"><h2 class="section-heading"><a href="04-Categorical-Variables.html">Categorical Variables</a></h2>
+<hr class="half-width">
+<ul>
+<li>Convert dataframe columns to factors using
+<code>as.factor</code>
+</li>
+<li>Draw barcharts using <code>plot</code> and <code>ggplot</code>
+</li>
+<li>Select an appropriate statistical test for a categorical
+dataset</li>
+<li>Analyse categorical data using <code>chisq.test</code> and
+<code>fisher.test</code>
+</li>
+</ul></section><section id="05-Continuous-Variable"><h2 class="section-heading"><a href="05-Continuous-Variable.html">Comparison Between Two Groups</a></h2>
+<hr class="half-width">
+<ul>
+<li>Use <code>hist</code> and boxplots to review distribution of
+variables for a group</li>
+<li>Summarise grouped data using the <code>by</code> command</li>
+<li>Distinguish paired and non-paired samples</li>
+<li>Correctly use the <code>t.test</code> and <code>wilcox.test</code>
+functions</li>
+</ul></section><section id="06-ANOVA"><h2 class="section-heading"><a href="06-ANOVA.html">Testing For More Than Two Groups</a></h2>
+<hr class="half-width">
+<ul>
+<li>Identify situations needing multiple sample tests and choose the
+relevant test using the decision tree</li>
+<li>Perform multi-group testing using <code>aov</code> and
+<code>kruskal.test</code>
+</li>
+<li>Perform and interpret post hoc tests using <code>TukeyHSD</code> and
+<code>dunnTest</code>
+</li>
+<li>Study interactions using <code>interaction.plot</code> and
+<code>aov</code>
+</li>
+<li>Check model assumptions using <code>plot</code>
+</li>
+</ul></section><section id="07-Multiple-Testing"><h2 class="section-heading"><a href="07-Multiple-Testing.html">Multiple testing, summary, and final exercises</a></h2>
+<hr class="half-width">
+<ul>
+<li>Understand the impact of multiple testing on p-values</li>
+<li>Use <code>p.adjust</code> to correct multiple-testing p-values</li>
 </ul></section>
 </div>
     </main>
@@ -299,9 +431,9 @@ locally</li>
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-rmd/key-points.html",
   "identifier": "https://carpentries.github.io/workbench-template-rmd/key-points.html",
-  "dateCreated": "2022-12-20",
-  "dateModified": "2022-12-20",
-  "datePublished": "2022-12-20"
+  "dateCreated": "2022-12-21",
+  "dateModified": "2022-12-21",
+  "datePublished": "2022-12-21"
 }
 
   </script><script>
