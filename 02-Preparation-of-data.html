@@ -351,7 +351,7 @@ the dataset?</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The field contents are as follows:</p>
 <ul><li>Patient_ID – a unique numerical identifier for each patient</li>
@@ -388,8 +388,8 @@ with fields separated by commas - a CSV file - so we will use the
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<div id="importing-tabular-data" class="callout-inner">
+<h3 class="callout-title">Importing tabular data<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
 <p>When reading in tabular data in R, you can use either
@@ -527,8 +527,8 @@ character strings.</p>
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<div id="value-added-data" class="callout-inner">
+<h3 class="callout-title">Value-added data<a class="anchor" aria-label="anchor" href="#callout2"></a>
 </h3>
 <div class="callout-content">
 <p>Sometimes patient ID is numeric and ordered according to recruitment.
@@ -558,7 +558,7 @@ place? What other issues might this have caused?</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You could use the <code>stringsAsFactors = FALSE</code> argument to
 <code>read.csv</code>. But this would mean that Gender was also read in

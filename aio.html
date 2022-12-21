@@ -418,7 +418,7 @@ treatment</li>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Option 2 is the correct answer - the default assumption (the null
 hypothesis) is that there is no difference between the two treatments,
@@ -472,7 +472,7 @@ discuss this with your neighbour.</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Probably not, because a census is an attempt to directly measure the
 whole population, not just a representative sample. However there is
@@ -540,7 +540,7 @@ confidence that the real population mean occurs.</p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Option 3. If the p-value is above our chosen significance level
 (commonly 0.05, 0.01 or 0.001) we don’t have sufficient evidence to
@@ -662,7 +662,7 @@ the dataset?</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The field contents are as follows:</p>
 <ul>
@@ -702,8 +702,8 @@ with fields separated by commas - a CSV file - so we will use the
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<div id="importing-tabular-data" class="callout-inner">
+<h3 class="callout-title">Importing tabular data<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
 <p>When reading in tabular data in R, you can use either
@@ -842,8 +842,8 @@ character strings.</p>
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<div id="value-added-data" class="callout-inner">
+<h3 class="callout-title">Value-added data<a class="anchor" aria-label="anchor" href="#callout2"></a>
 </h3>
 <div class="callout-content">
 <p>Sometimes patient ID is numeric and ordered according to recruitment.
@@ -873,7 +873,7 @@ place? What other issues might this have caused?</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You could use the <code>stringsAsFactors = FALSE</code> argument to
 <code>read.csv</code>. But this would mean that Gender was also read in
@@ -1155,8 +1155,8 @@ association between the variables</p>
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<div id="publishing-correlations" class="callout-inner">
+<h3 class="callout-title">Publishing correlations<a class="anchor" aria-label="anchor" href="#callout2"></a>
 </h3>
 <div class="callout-content">
 <p>p-values should never be reported for correlations in publications;
@@ -1459,7 +1459,7 @@ does it contain?</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>There are seven categorical fields in this dataset: Gender, Obese,
 Smoking.Status, Alcohol.Consumption, Treatment, Rec, and Mult</p>
@@ -1751,7 +1751,7 @@ in each cell</li>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Answer: 2</p>
 </div>
@@ -1780,7 +1780,7 @@ identify and perform the appropriate statistical test.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1950,7 +1950,7 @@ two groups (with and without recurrence) had different BMIs?</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>One data set is normally distributed, the other is not, so we choose
 the option for non-normally distributed data - the branch to the right
@@ -2018,8 +2018,8 @@ If <strong>data are paired</strong>: Student’s paired T-test</p>
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<div id="multiple-tests-in-one" class="callout-inner">
+<h3 class="callout-title">Multiple tests in one<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
 <p>The R <code>t.test</code> function combines all three of these tests,
@@ -2043,8 +2043,8 @@ absolute values.</p>
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<div id="another-multiple-test-function" class="callout-inner">
+<h3 class="callout-title">Another multiple-test function<a class="anchor" aria-label="anchor" href="#callout2"></a>
 </h3>
 <div class="callout-content">
 <p>The <code>wilcox.test</code> function in R defaults to unpaired data
@@ -2223,7 +2223,7 @@ who do not.</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3015,12 +3015,13 @@ Placebo:Male-Prozac:Female   -2.00 -3.28813584 -0.7118642 0.0016445
 Prozac:Male-Prozac:Female     1.00 -0.28813584  2.2881358 0.1650724
 Prozac:Male-Placebo:Male      3.00  1.71186416  4.2881358 0.0000132</code></pre>
 </div>
-<p>The \$Treatment section of this output supports our conclusion from
-the two-way ANOVA that Prozac increases happiness score, by an average
-of 1.6 happiness units (95% CI: 0.95-2.3). The $Treatment:Gender section
-indicates that Prozac has no effect on happiness in females (or at
-least, not a statistically signficant effect), but in males it increases
-happiness by approximatey 3.0 units.</p>
+<p>The \<span class="math inline">\(Treatment section of this output
+supports our conclusion from the two-way ANOVA that Prozac increases
+happiness score, by an average of 1.6 happiness units (95% CI:
+0.95-2.3). The \\\)</span>Treatment:Gender section indicates that Prozac
+has no effect on happiness in females (or at least, not a statistically
+signficant effect), but in males it increases happiness by approximately
+3.0 units.</p>
 </div>
 </div>
 <div class="section level3">
