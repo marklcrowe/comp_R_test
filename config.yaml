@@ -65,6 +65,8 @@ episodes:
 - 03-Correlation.Rmd
 - 04-Categorical-Variables.Rmd
 - 05-Continuous-Variable.Rmd
+- 06-ANOVA.Rmd
+- 07-Multiple-Testing.Rmd
 
 # Information for Learners
 learners: 

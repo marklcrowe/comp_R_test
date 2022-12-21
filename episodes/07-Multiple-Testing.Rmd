@@ -49,6 +49,7 @@ performing multiple tests, that probability of error applies for each individual
 comparison, so the more tests performed, the higher likelihood of a type I error.
 
 In our example three-way comparison with signficance threshold of 0.05:
+
 * Prob(making no mistake) = 0.95 x 0.95 x 0.95 = 0.857
 * Prob(making a mistake) = 1 - 0.857 = 0.143
 
@@ -77,6 +78,7 @@ need to adjust the p-value according to the number of hypothesis tests
 performed. 
 
 Examples of correction approaches include:
+
 * False Discovery Rate (FDR): controls the type I error rate
 * Bonferroni correction (FWER): reduce the probability of even one false 
 discovery
