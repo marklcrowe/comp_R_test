@@ -338,7 +338,7 @@ distributed</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>We can use the <code>shapiro.test</code> function to test for
 normality - or rather, to test the alternative hypothesis that the data
@@ -493,11 +493,11 @@ distributed data so would not be a valid test anyway.</p>
 <p>The one-way ANOVA and Kruskal-Wallis tests only identify that one (or
 more) of the groups has a significant difference to the others. To go
 further, we would want to identify which group(s) were different. For
-this we would use a <strong><em>Post-hoc</em></strong>
-<strong>test</strong>, either Tukeys’ HSD for ANOVA or Dunn’s test (in
-the FSA package) for Kruskal-Wallis. This performs a multiple-testing
-corrected pairwise comparison between each combination of groups to
-highlight which (if any) are different.</p>
+this we would use a <strong><em>post-hoc</em></strong> test, either
+Tukeys’ HSD for ANOVA or Dunn’s test (in the FSA package) for
+Kruskal-Wallis. This performs a multiple-testing corrected pairwise
+comparison between each combination of groups to highlight which (if
+any) are different.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -574,7 +574,7 @@ Does this show a significant difference as you might expect?</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -614,7 +614,7 @@ test</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -959,7 +959,7 @@ would mean it should be analysed using a paired data technique?</p>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>One option would be that if, rather than testing on 24 individuals
 assigned randomly to placebo/treatment groups, the trial was instead
