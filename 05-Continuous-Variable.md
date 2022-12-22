@@ -105,11 +105,11 @@ justified.
 
 | | | |
 | ---------: | :------: | --------- |
-| H<sub>0</sub>:&nbsp;µ<sub>1</sub>&nbsp;=&nbsp;µ<sub>2</sub> | against | H<sub>1</sub>:&nbsp;µ<sub>1</sub>&nbsp;≠&nbsp;µ<sub>2</sub>&nbsp;(two&#8209;sided) |
+| H<sub>0</sub>: µ<sub>1</sub> = µ<sub>2</sub> | against | H<sub>1</sub>: µ<sub>1</sub> ≠ µ<sub>2</sub> (two&#8209;sided) |
 | | or | |
-| H<sub>0</sub>:&nbsp;µ<sub>1</sub>&nbsp;<=&nbsp;µ<sub>2</sub> | against | H<sub>1</sub>:&nbsp;µ<sub>1</sub>&nbsp;>&nbsp;µ<sub>2</sub>&nbsp;(greater) |
+| H<sub>0</sub>: µ<sub>1</sub> <= µ<sub>2</sub> | against | H<sub>1</sub>: µ<sub>1</sub> > µ<sub>2</sub> (greater) |
 | | or | |
-| H<sub>0</sub>:&nbsp;µ<sub>1</sub>&nbsp;>=&nbsp;µ<sub>2</sub> | against | H<sub>1</sub>:&nbsp;µ<sub>1</sub>&nbsp;<&nbsp;µ<sub>2</sub>&nbsp;(less) |
+| H<sub>0</sub>: µ<sub>1</sub> >= µ<sub>2</sub> | against | H<sub>1</sub>: µ<sub>1</sub> < µ<sub>2</sub> (less) |
 
 If **equal variance**: Student's T-test  
 If **unequal variance**: Welch's two-sample T-test  
