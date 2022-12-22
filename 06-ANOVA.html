@@ -493,7 +493,7 @@ distributed data so would not be a valid test anyway.</p>
 <p>The one-way ANOVA and Kruskal-Wallis tests only identify that one (or
 more) of the groups has a significant difference to the others. To go
 further, we would want to identify which group(s) were different. For
-this we would use a <strong><em>Post-hoc</em></strong>
+this we would use a <strong><i>Post-hoc</i></strong>
 <strong>test</strong>, either Tukeys’ HSD for ANOVA or Dunn’s test (in
 the FSA package) for Kruskal-Wallis. This performs a multiple-testing
 corrected pairwise comparison between each combination of groups to
@@ -509,15 +509,7 @@ highlight which (if any) are different.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>Dunn (1964) Kruskal-Wallis multiple comparison</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
 <pre class="output" tabindex="0"><code>  p-values adjusted with the Bonferroni method.</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
 <pre class="output" tabindex="0"><code>             Comparison           Z   P.unadj P.adj
 1  Alcohol - NonAlcohol  0.79245283 0.4280967     1
 2    Alcohol - Previous  0.75516608 0.4501493     1
