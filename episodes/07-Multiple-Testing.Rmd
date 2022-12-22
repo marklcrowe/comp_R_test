@@ -102,7 +102,7 @@ This table can be used as a reference to select the appropriate test to use from
 a given experimental design
 
 |Analysis required (continuous data) |Normally distributed data |Non-normally distributed data |
-|-----|-----|-----|
+|-------|---|---|
 |Compare mean or median of one sample group against a known value |One sample t-test |Wilcoxon Rank Sum test |
 |Compare means or medians of two sample groups (unpaired data) |Unpaired t-test |Mann-Whitney test |
 |Compare means or medians of two sample groups (paired data) |Paired t-test |Wilcoxon Matched Pairs test |
@@ -110,7 +110,7 @@ a given experimental design
 |Compare means or medians of ≥ three sample groups (paired data) |Repeated measures ANOVA |Friedman test |
 
 |Analysis required (categorical data) |Test used |
-|-----|-----|
+|------|---|
 |Compare two sample proportions of categorical data (unpaired data, ≤5 in one group) |Fisher exact test |
 |Compare two sample proportions of categorical data (unpaired data, >5 in all groups) |Chi-square test |
 |Compare two sample proportions of categorical data (paired data) |McNemar test |
