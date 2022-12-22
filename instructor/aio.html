@@ -664,7 +664,7 @@ the dataset?</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The field contents are as follows:</p>
 <ul>
@@ -875,7 +875,7 @@ place? What other issues might this have caused?</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You could use the <code>stringsAsFactors = FALSE</code> argument to
 <code>read.csv</code>. But this would mean that Gender was also read in
@@ -985,7 +985,7 @@ relatedness using correlation analysis.</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>1 and 2 are both continous variables, although age in particular is
 often recorded in whole (discrete) units such as months or years.
@@ -1067,7 +1067,7 @@ two of these to see if they show signs of correlation</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Using Weight and BMI as an example:
 <code>plot(gallstones$Weight, gallstones$BMI)</code></p>
@@ -1285,7 +1285,7 @@ your interpretations were correct.</p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Example commands: <code>mean(data1$x)</code>,
 <code>sd(data2$y)</code>, <code>cor.test(data3$x, data3$y)</code></p>
@@ -1318,7 +1318,7 @@ for correlation of these properties?</p>
   Solution to challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>First, plot the data</p>
 <div class="codewrapper sourceCode" id="cb13">
@@ -1981,9 +1981,9 @@ unless there is a specific reason why a single-sided one is
 justified.</p>
 <table class="table">
 <colgroup>
-<col width="37%">
-<col width="29%">
-<col width="33%">
+<col width="28%">
+<col width="12%">
+<col width="60%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2009,7 +2009,7 @@ justified.</p>
 <td></td>
 </tr>
 <tr class="odd">
-<td align="right">H<sub>0</sub>: µ<sub>1</sub> &gt;= µ<sub>2</sub>
+<td align="right">H<sub>0</sub>: µ<sub>1</sub> &gt;= µ<sub>2</sub>
 </td>
 <td align="center">against</td>
 <td>H<sub>1</sub>: µ<sub>1</sub> &lt; µ<sub>2</sub> (less)</td>
@@ -3313,9 +3313,9 @@ multiple-testing correction on a vector of p-values.</p>
 to use from a given experimental design</p>
 <table class="table">
 <colgroup>
-<col width="33%">
-<col width="33%">
-<col width="33%">
+<col width="53%">
+<col width="23%">
+<col width="23%">
 </colgroup>
 <thead><tr class="header">
 <th>Analysis required (continuous data)</th>
@@ -3354,8 +3354,8 @@ data)</td>
 </table>
 <table class="table">
 <colgroup>
-<col width="50%">
-<col width="50%">
+<col width="66%">
+<col width="33%">
 </colgroup>
 <thead><tr class="header">
 <th>Analysis required (categorical data)</th>
