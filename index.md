@@ -29,7 +29,9 @@ Topics covered during the workshop will include:
 
 ## Prerequisites
 
-Prior knowledge of R is required (the R for Reproducible Scientific Research Software Carpentry workshop is _highly_ recommended) as the basics of R will not be covered.
+Prior knowledge of R is required ("[Introduction to Programming: R for Reproducible Scientific 
+Analysis](https://www.qcif.edu.au/trainingcourses/r-for-reproducible-scientific-analysis/)" workshop is _highly_ recommended) as the basics of 
+R will not be covered.
 
 ::::::::::::::::::::::::::::::: 
 
