@@ -330,9 +330,9 @@ other attached packages:
 [1] FSA_0.9.3        ggplot2_3.4.0    gmodels_2.18.1.1
 
 loaded via a namespace (and not attached):
- [1] knitr_1.41       magrittr_2.0.3   MASS_7.3-58.1    tidyselect_1.2.0
- [5] munsell_0.5.0    colorspace_2.0-3 R6_2.5.1         rlang_1.0.6     
- [9] fansi_1.0.3      dplyr_1.0.10     stringr_1.5.0    tools_4.2.2     
+ [1] knitr_1.41       magrittr_2.0.3   MASS_7.3-58.2    tidyselect_1.2.0
+ [5] munsell_0.5.0    colorspace_2.1-0 R6_2.5.1         rlang_1.0.6     
+ [9] fansi_1.0.4      dplyr_1.0.10     stringr_1.5.0    tools_4.2.2     
 [13] grid_4.2.2       gtable_0.3.1     xfun_0.35        utf8_1.2.2      
 [17] cli_3.4.1        withr_2.5.0      gtools_3.9.4     tibble_3.1.8    
 [21] lifecycle_1.0.3  vctrs_0.5.1      glue_1.6.2       evaluate_0.18   
